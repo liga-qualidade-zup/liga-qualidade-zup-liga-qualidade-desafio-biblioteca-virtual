@@ -1,11 +1,10 @@
 package br.com.zup.edu.ligaqualidade.desafiobiblioteca.modifique;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.List;
+import java.util.Set;
 
-import br.com.zup.edu.ligaqualidade.desafiobiblioteca.DadosEmprestimo;
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.DadosDevolucao;
+import br.com.zup.edu.ligaqualidade.desafiobiblioteca.DadosEmprestimo;
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.EmprestimoConcedido;
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosExemplar;
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosLivro;
@@ -32,12 +31,12 @@ public class Solucao {
 	 * @param dataParaSerConsideradaNaExpiracao aqui é a data que deve ser utilizada para verificar expiração
 	 * @return
 	 */
-	public static Collection<EmprestimoConcedido> executa(List<DadosLivro> livros,
-			List<DadosExemplar> exemplares,
-			List<DadosUsuario> usuarios, List<DadosEmprestimo> emprestimos,
-			List<DadosDevolucao> devolucoes, LocalDate dataParaSerConsideradaNaExpiracao) {
+	public static Set<EmprestimoConcedido> executa(Set<DadosLivro> livros,
+			Set<DadosExemplar> exemplares,
+			Set<DadosUsuario> usuarios, Set<DadosEmprestimo> emprestimos,
+			Set<DadosDevolucao> devolucoes, LocalDate dataParaSerConsideradaNaExpiracao) {
 		
-		return List.of();
+		return Set.of();
 	}
 
 }
