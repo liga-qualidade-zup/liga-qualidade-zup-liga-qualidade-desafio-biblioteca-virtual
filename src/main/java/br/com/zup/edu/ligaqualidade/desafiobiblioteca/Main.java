@@ -1,8 +1,13 @@
 package br.com.zup.edu.ligaqualidade.desafiobiblioteca;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.junit.jupiter.api.Assertions;
 
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.modifique.Solucao;
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.DadosExemplar;
@@ -53,6 +58,33 @@ public class Main {
 		DadosUsuario usuario1 = new DadosUsuario(TipoUsuario.PADRAO,1);
 		DadosUsuario usuario2 = new DadosUsuario(TipoUsuario.PESQUISADOR,2);
 		
+		
+		
+		List<DadosLivro> livros = List.of(dadosLivro1);
+		List<DadosExemplar> exemplares = List.of(dadosExemplar2Livro1,dadosExemplar2Livro2,dadosExemplar2Livro3,dadosExemplar2Livro4,dadosExemplar2Livro5);
+		List<DadosUsuario> usuarios = List.of(usuario1);
+		
+		DadosEmprestimo pedidoEmprestimo1 = new DadosEmprestimo(idLivro1,usuario1.idUsuario,60,TipoExemplar.LIVRE,1);
+		DadosEmprestimo pedidoEmprestimo2 = new DadosEmprestimo(idLivro1,usuario1.idUsuario,60,TipoExemplar.LIVRE,2);
+		DadosEmprestimo pedidoEmprestimo3 = new DadosEmprestimo(idLivro1,usuario1.idUsuario,60,TipoExemplar.LIVRE,3);
+		DadosEmprestimo pedidoEmprestimo4 = new DadosEmprestimo(idLivro1,usuario1.idUsuario,60,TipoExemplar.LIVRE,4);
+		DadosEmprestimo pedidoEmprestimo5 = new DadosEmprestimo(idLivro1,usuario1.idUsuario,60,TipoExemplar.LIVRE,5);
+		
+		List<DadosEmprestimo> emprestimos = List.of(pedidoEmprestimo1,pedidoEmprestimo2,pedidoEmprestimo3,pedidoEmprestimo4,pedidoEmprestimo5);
+		
+		List<DadosDevolucao> devolucoes = List.of();
+		
+		Collection<EmprestimoConcedido> resultados =  Solucao.executa(livros,exemplares,usuarios,emprestimos,devolucoes,LocalDate.now().plusDays(61));
+		
+		System.out.println("****** Resultados teste 1 começo ********");
+		
+		
+		Set<Integer> idsExemplaresRetornados = resultados.stream().map(r -> r.idExemplar).collect(Collectors.toSet());
+		Set<Integer> idsExemplaresEsperados = exemplares.stream().map(e -> e.idExemplar).collect(Collectors.toSet());
+		System.out.println("Ids exemplares esperados? "+idsExemplaresEsperados+". Ids exemplares retornados? "+idsExemplaresRetornados+". Correto? ");
+		
+		System.out.println("****** Resultados teste 1 fim ********");
+		
 		/*
 		 * Cenario 1
 		 * 
@@ -98,14 +130,7 @@ public class Main {
 		 * 
 		 */
 		
-		PedidoEmprestimo pedidoEmprestimo = new PedidoEmprestimo(idLivro1,usuario1.idUsuario,50,TipoExemplar.LIVRE,1);
-		
-		List<DadosLivro> livros = List.of(dadosLivro1);
-		List<DadosExemplar> exemplares = List.of(dadosExemplar1Livro1,dadosExemplar2Livro1);
-		List<DadosUsuario> usuarios = List.of(usuario1);
-		List<PedidoEmprestimo> emprestimos = List.of(pedidoEmprestimo);
-		
-		Collection<EmprestimoConcedido> resultados =  Solucao.executa(livros,exemplares,usuarios,emprestimos);
+
 		
 	}
 

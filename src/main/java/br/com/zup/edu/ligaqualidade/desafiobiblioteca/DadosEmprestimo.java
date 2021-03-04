@@ -2,7 +2,7 @@ package br.com.zup.edu.ligaqualidade.desafiobiblioteca;
 
 import br.com.zup.edu.ligaqualidade.desafiobiblioteca.pronto.TipoExemplar;
 
-public class PedidoEmprestimo {
+public class DadosEmprestimo {
 
 	public final int idLivro;
 	public final int idUsuario;
@@ -11,7 +11,7 @@ public class PedidoEmprestimo {
 	public final int tempo;
 	public final TipoExemplar tipoExemplar;
 
-	public PedidoEmprestimo(int idLivro, int idUsuario,int tempo,TipoExemplar tipoExemplar, int idPedido) {
+	public DadosEmprestimo(int idLivro, int idUsuario,int tempo,TipoExemplar tipoExemplar, int idPedido) {
 		this.idLivro = idLivro;
 		this.idUsuario = idUsuario;
 		this.tempo = tempo;
